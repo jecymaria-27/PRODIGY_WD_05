@@ -1,377 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jecy Maria Moies | Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <title>Weather App - India</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+    /* General Style */
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
     }
+
     body {
-      font-family: "Poppins", sans-serif;
-      background: #0f0e17;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
       color: #fff;
-      scroll-behavior: smooth;
-    }
-
-    /* NAVBAR */
-    .navbar {
+      min-height: 100vh;
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
-      padding: 15px 5%;
-      background: #1a1536;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-    .logo {
-      font-weight: 700;
-      font-size: 1.5rem;
-      color: #ffd700;
-    }
-    .navbar ul {
-      list-style: none;
-      display: flex;
-      gap: 20px;
-    }
-    .navbar a {
-      color: white;
-      text-decoration: none;
-      font-weight: 500;
-      transition: 0.3s;
-    }
-    .navbar a:hover {
-      color: #ffd700;
-    }
-    .menu-button {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      color: white;
-      cursor: pointer;
+      flex-direction: column;
+      padding: 20px;
     }
 
-    /* HERO */
-    .hero {
-      background: linear-gradient(135deg, #241a5a, #3c2a88);
-      color: white;
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      background: linear-gradient(to right, #00f2fe, #4facfe);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: 1px;
+    }
+
+    /* Weather Box */
+    .weather-box {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+      backdrop-filter: blur(10px);
       text-align: center;
-      padding: 100px 20px;
-      min-height: 60vh;
+      width: 100%;
+      max-width: 380px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    .hero h1 {
-      font-size: 2.8rem;
-      margin-bottom: 15px;
+
+    .weather-box:hover {
+      transform: scale(1.03);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
     }
-    .hero h1 span {
-      color: #ffd700;
+
+    /* Input & Button */
+    input {
+      width: 70%;
+      padding: 10px;
+      border: none;
+      border-radius: 10px;
+      outline: none;
+      font-size: 1rem;
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      text-align: center;
     }
-    .headline {
-      font-size: 1.2rem;
-      margin-bottom: 40px;
-      font-weight: 400;
+
+    input::placeholder {
       color: #ddd;
     }
-    .btn {
-      padding: 12px 25px;
-      background: #ffd700;
-      color: #0f0e17;
-      text-decoration: none;
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #ff9800, #ff5722);
+      color: white;
       font-weight: 600;
-      border-radius: 6px;
-      transition: 0.3s;
-    }
-    .btn:hover {
-      background: white;
-      color: #3c2a88;
-    }
-
-    /* SECTIONS */
-    .section {
-      padding: 80px 5%;
-    }
-    h2 {
-      text-align: center;
-      color: #ffd700;
-      margin-bottom: 50px;
-      font-size: 2rem;
-    }
-
-    /* ABOUT */
-    .about-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 40px;
-      justify-content: center;
-      align-items: flex-start;
-    }
-    .about-text {
-      max-width: 500px;
-    }
-    .about-cards {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-    .card {
-      background: #1a1536;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-    }
-
-    /* SKILLS */
-    .skills-container {
-      max-width: 800px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-    .skill {
-      display: flex;
-      flex-direction: column;
-    }
-    .skill h4 {
-      margin-bottom: 5px;
-    }
-    .skill-bar {
-      width: 100%;
-      height: 15px;
-      background: #2e2762;
-      border-radius: 10px;
-      overflow: hidden;
-    }
-    .skill-level {
-      height: 100%;
-      border-radius: 10px;
-      background: #ffd700;
-      width: 0;
-    }
-
-    /* PROJECTS */
-    .projects-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 30px;
-      justify-content: center;
-    }
-    .project-card {
-      background: #1a1536;
-      padding: 25px;
-      width: 300px;
-      border-radius: 8px;
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .project-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
-    }
-    .project-card a {
-      display: inline-block;
+      cursor: pointer;
+      transition: all 0.3s ease;
       margin-top: 10px;
-      color: #ffd700;
-      font-weight: 500;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-    .project-card a:hover {
-      color: white;
     }
 
-    /* CONTACT */
-    .contact-section {
-      text-align: center;
-    }
-    .contact-section p {
-      font-size: 1rem;
-      margin: 10px 0;
-      color: #ccc;
+    button:hover {
+      background: linear-gradient(135deg, #ffb74d, #ff7043);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(255, 152, 0, 0.5);
     }
 
-    /* FOOTER */
-    footer {
-      text-align: center;
-      padding: 25px;
-      background: #1a1536;
-      color: white;
-    }
-    .social-links a {
-      margin: 0 10px;
-      color: #ffd700;
-      font-size: 1.5rem;
-      transition: 0.3s;
-    }
-    .social-links a:hover {
-      color: white;
+    /* Result Section */
+    #result {
+      margin-top: 25px;
+      animation: fadeIn 0.5s ease-in-out;
     }
 
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      .menu-button {
-        display: block;
-      }
-      .navbar ul {
-        display: none;
-        flex-direction: column;
-        gap: 0;
-        background: #1a1536;
-        position: absolute;
-        top: 60px;
-        width: 100%;
-        left: 0;
-        text-align: center;
-      }
-      .navbar ul.active {
-        display: flex;
-      }
-      .about-container {
-        flex-direction: column;
-      }
+    img {
+      width: 80px;
+      height: 80px;
+      margin-top: 10px;
+      filter: drop-shadow(0 0 5px rgba(255,255,255,0.5));
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin: 6px 0;
+    }
+
+    strong {
+      color: #00e5ff;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 480px) {
+      h1 { font-size: 1.8rem; }
+      .weather-box { padding: 20px; }
+      input { width: 100%; }
     }
   </style>
 </head>
-
 <body>
-  <!-- NAVBAR -->
-  <header class="navbar">
-    <div class="logo">Jecy Maria Moies</div>
-    <nav id="nav-links">
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-    <button id="menu-toggle" class="menu-button">☰</button>
-  </header>
+  <h1>🌦 Weather App - India</h1>
 
-  <!-- HERO -->
-  <section id="home" class="hero">
-    <h1>Hello, I'm <span>Jecy Maria Moies</span></h1>
-    <p class="headline">Aspiring Web Developer | HTML, CSS & JavaScript Enthusiast</p>
-    <a href="#projects" class="btn">View My Work</a>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about" class="section about-me">
-    <h2>About Me</h2>
-    <div class="about-container">
-      <div class="about-text">
-        <h3>Hi! I'm Jecy</h3>
-        <p>
-          I'm a third-year Computer Science student with a passion for creating
-          beautiful, responsive websites. I love experimenting with new
-          technologies and turning ideas into real projects. My goal is to
-          become a skilled front-end developer with a strong portfolio.
-        </p>
-      </div>
-      <div class="about-cards">
-        <div class="card">
-          <h4>Education</h4>
-          <p>Bachelor of Computer Science (BCS) | 2022–2026</p>
-        </div>
-        <div class="card">
-          <h4>Experience</h4>
-          <p>
-            Hands-on projects in HTML, CSS, and JavaScript. Actively learning
-            modern web frameworks.
-          </p>
-        </div>
-        <div class="card">
-          <h4>Interests</h4>
-          <p>Creative crafts, video editing, web series, and music.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SKILLS -->
-  <section id="skills" class="section skills-section">
-    <h2>My Skills</h2>
-    <div class="skills-container">
-      <div class="skill">
-        <h4>HTML</h4>
-        <div class="skill-bar"><div class="skill-level html"></div></div>
-      </div>
-      <div class="skill">
-        <h4>CSS</h4>
-        <div class="skill-bar"><div class="skill-level css"></div></div>
-      </div>
-      <div class="skill">
-        <h4>JavaScript</h4>
-        <div class="skill-bar"><div class="skill-level js"></div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section id="projects" class="section projects-section">
-    <h2>Projects</h2>
-    <div class="projects-container">
-      <div class="project-card">
-        <h4>Tic-Tac-Toe Game</h4>
-        <p>Interactive web-based Tic-Tac-Toe built using HTML, CSS & JavaScript.</p>
-        <a href="https://jecymaria-27.github.io/PRODIGY_WD_03/">View Project</a>
-      </div>
-      <div class="project-card">
-        <h4>Responsive Landing Page</h4>
-        <p>Beautiful landing page with smooth responsiveness and modern UI.</p>
-        <a href="https://jecymaria-27.github.io/PRODIGY_WD_01/">View Project</a>
-      </div>
-      <div class="project-card">
-        <h4>Stopwatch App</h4>
-        <p>Simple and functional stopwatch application made with JavaScript.</p>
-        <a href="https://jecymaria-27.github.io/PRODIGY_WD_02/">View Project</a>
-      </div>
-      <div class="project-card">
-        <h4>Weather App</h4>
-        <p>Real-time weather forecast app built with JavaScript and OpenWeather API.</p>
-        <a href="https://jecymaria-27.github.io/PRODIGY_WD_05/">View Project</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact" class="section contact-section">
-    <h2>Contact Me</h2>
-    <p><strong>Email:</strong> jecymaria456@gmail.com</p>
-    <p><strong>Phone:</strong> 9321605125</p>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="social-links">
-      <a href="https://www.linkedin.com/in/jecy-maria-moies-81a739353?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class="fab fa-linkedin"></i></a>
-      <a href="https://github.com/jecymaria-27"><i class="fab fa-github"></i></a>
-    </div>
-    <p>&copy; 2025 Jecy Maria Moies | Web Developer Portfolio</p>
-  </footer>
+  <div class="weather-box">
+    <input type="text" id="city" placeholder="Enter city (e.g., Mumbai)">
+    <br>
+    <button onclick="getWeather()">Get Weather</button>
+    <div id="result"></div>
+  </div>
 
   <script>
-    const menuToggle = document.getElementById("menu-toggle");
-    const navLinks = document.querySelector(".navbar ul");
+    const apiKey = "f5cfb9d49d4649f2972162525253008"; // your API key
 
-    menuToggle.addEventListener("click", () => {
-      navLinks.classList.toggle("active");
-      menuToggle.textContent = navLinks.classList.contains("active") ? "✕" : "☰";
-    });
+    async function getWeather() {
+      const city = document.getElementById("city").value.trim() || "Mumbai";
+      const resultDiv = document.getElementById("result");
+      resultDiv.innerHTML = "<p>🔍 Fetching weather data...</p>";
 
-    window.addEventListener("load", () => {
-      document.querySelector(".html").style.width = "90%";
-      document.querySelector(".css").style.width = "85%";
-      document.querySelector(".js").style.width = "75%";
-    });
+      const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city},India&aqi=no`;
+
+      try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error("City not found");
+        const data = await response.json();
+
+        resultDiv.innerHTML = `
+          <h2>${data.location.name}, ${data.location.region}</h2>
+          <img src="https:${data.current.condition.icon}" alt="Weather Icon">
+          <p><strong>${data.current.condition.text}</strong></p>
+          <p>🌡 Temperature: <strong>${data.current.temp_c}°C</strong></p>
+          <p>💧 Humidity: <strong>${data.current.humidity}%</strong></p>
+          <p>💨 Wind: <strong>${data.current.wind_kph} kph</strong></p>
+          <p>🕒 Local Time: <strong>${data.location.localtime}</strong></p>
+        `;
+      } catch (error) {
+        resultDiv.innerHTML = `<p style="color:#ff6b6b;">❌ ${error.message}</p>`;
+      }
+    }
   </script>
 </body>
 </html>
